@@ -2,6 +2,9 @@
 
 console.log('app.js is running');
 
+var app = {
+    title: "indecision App"
+};
 var template = React.createElement(
     'div',
     null,
@@ -17,23 +20,29 @@ var template = React.createElement(
     )
 );
 
+var userName = 'Mike';
+var userAge = 20;
+var userLocation = 'Philly';
 var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'Name:'
+        'Name: ',
+        userName
     ),
     React.createElement(
         'p',
         null,
-        'Age:'
+        'Age: ',
+        userAge
     ),
     React.createElement(
         'p',
         null,
-        'Location:'
+        'Location: ',
+        userLocation
     )
 );
 

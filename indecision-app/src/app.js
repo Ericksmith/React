@@ -1,5 +1,8 @@
 console.log('app.js is running');
 
+const app = {
+    title: "indecision App"
+}
 var template = (
     <div>
         <p>Does this change?</p>
@@ -7,11 +10,14 @@ var template = (
     </div>
 );
 
+const userName = 'Mike';
+const userAge = 20;
+const userLocation = 'Philly'
 var templateTwo = (
     <div>
-        <h1>Name:</h1>
-        <p>Age:</p>
-        <p>Location:</p>
+        <h1>Name: {userName}</h1>
+        <p>Age: {userAge}</p>
+        <p>Location: {userLocation}</p>
     </div>
 );
 
