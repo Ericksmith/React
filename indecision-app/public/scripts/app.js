@@ -3,22 +3,36 @@
 console.log('app.js is running');
 
 var app = {
-    title: "indecision App"
+    title: "indecision App",
+    subtitle: 'Put your life in the hands of a computer',
+    options: ['One', 'Two']
 };
+
 var template = React.createElement(
     'div',
     null,
     React.createElement(
         'p',
         null,
-        'Does this change?'
+        app.title
     ),
-    React.createElement(
+    app.subtitle && React.createElement(
         'h1',
         null,
-        'test'
+        app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No options'
     )
 );
+
+var user = {
+    name: 'Mike',
+    age: 18,
+    location: "Philly"
+};
 
 var userName = 'Mike';
 var userAge = 20;
@@ -41,17 +55,17 @@ var templateTwo = React.createElement(
         'h1',
         null,
         'Name: ',
-        userName
+        user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         'p',
         null,
         'Age: ',
-        userAge
+        user.age
     ),
-    getLocation(userLocation)
+    getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
