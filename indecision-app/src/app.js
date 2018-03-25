@@ -3,40 +3,47 @@ console.log('app.js is running');
 const app = {
     title: "indecision App",
     subtitle: 'Put your life in the hands of a computer',
-    options: ['One', 'Two']
+    options: []
 }
 
-const template = (
-    <div>
-        <p>{app.title}</p>
-        {app.subtitle && <h1>{app.subtitle}</h1>}
-        <p>{(app.options.length > 0) ? 'Here are your options' : 'No options' }</p>
-    </div>
-);
-
-const user =  {
-    name: 'Mike',
-    age: 18,
-    location: "Philly"
-}
-
-const userName = 'Mike';
-const userAge = 20;
-const userLocation = 'Philly'
-
-function getLocation(location){
-    if(location){
-        return <p>Location: {location}</p>;
+const onFormSubmit = (e) => {
+    e.preventDefault();
+    const option = e.target.elements.option.value;
+    if(option){
+        app.options.push(option);
+        e.target.elements.option.value = '';
+        renderPage();
     }
 }
-const templateTwo = (
-    <div>
-        <h1>Name: {user.name ? user.name : 'Anonymous'}</h1>
-        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-        {getLocation(user.location)}
-    </div>
-);
+
+const removeAll = () => {
+    app.options = [];
+    renderPage();
+}
+
+const renderPage = () =>{ 
+    const template = (
+        <div>
+            <p>{app.title}</p>
+            {app.subtitle && <h1>{app.subtitle}</h1>}
+            <p>{(app.options.length > 0) ? 'Here are your options' : 'No options' }</p>
+            <p>{app.options.length}</p>
+            <button onClick={removeAll}>Remove All</button>
+            <ol>
+            {
+                app.options.map((option) => {
+                    return <li key={option}>{option}</li>
+                })
+            }
+            </ol>
+            <form action="" onSubmit={onFormSubmit}>
+                <input type="text" name="option" />
+                <button>Add Option</button>
+            </form>
+        </div>
+    );
+    ReactDOM.render(template, appRoot);
+}
 
 const appRoot = document.getElementById('app');
-
-ReactDOM.render(template, appRoot);
+renderPage()
