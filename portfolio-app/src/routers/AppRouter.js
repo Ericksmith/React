@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ExpenseDashboardPage from '../components/ExpenseDashboardPage';
 import Header from '../components/Header';
-import AddExpensePage from '../components/AddExpensePage';
-import HelpPage from '../components/HelpPage';
-import EditExpensePage from '../components/EditExpensePage';
 import NotFoundPage from '../components/NotFoundPage';
+import Index from '../components/Index';
+import Show from '../components/Show';
+import Contact from '../components/Contact';
+import Portfolio from '../components/Portfolio';
+
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
 
 const AppRouter = () => (
@@ -13,10 +14,10 @@ const AppRouter = () => (
         <div>
             <Header />
             <Switch>
-                <Route path="/" component={ExpenseDashboardPage} exact={true}/>
-                <Route path="/create" component={AddExpensePage}/>
-                <Route path="/edit/:id" component={EditExpensePage}/>
-                <Route path="/help" component={HelpPage}/>
+                <Route path="/" component={Index} exact={true}/>
+                <Route path="/portfolio/:id" component={Show}/>
+                <Route path="/portfolio" component={Portfolio}/>
+                <Route path="/contact" component={Contact}/>
                 <Route component={NotFoundPage} />
             </Switch>
         </div>
