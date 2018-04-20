@@ -21,7 +21,6 @@ setTimeout(()=>{
 
 const state = store.getState();
 const visableExpenses = getVisibleExpenses(state.expenses, state.filters);
-console.log(visableExpenses);
 
 const jsx = (
     <Provider store={store}>
